@@ -1,0 +1,40 @@
+<!--form html STARTS -->
+
+
+
+<div class="" style="margin-top: 50px;">
+
+    <div id="PS_formXHR_parent"><h1 class="text-center">
+        Change your form name here            </h1>
+        <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 success">
+            <form data-toggle="validator" action="{{PS_uri}}" method="post" novalidate="true" id="PS_formXHR" ps_lateral_id="PS_formXHR_parent">
+
+
+
+                <label for=title class="control-label">Label for [ title ]</label><div class="form-group has-feedback "><input  class="form-control "  name="title"  id="title"  value="{{ results.title }}"  placeholder=""  data-error="Please verify your information" data-minlength ='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div><BR/><label for=name class="control-label">Label for [ name ]</label><div class="form-group has-feedback "><input  class="form-control "  name="name"  id="name"  value="{{ results.name }}"  placeholder=""  data-error="Please verify your information" data-minlength ='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div><BR/><label for=email class="control-label">Label for [ email ]</label><div class="form-group has-feedback "><input  class="form-control "  name="email"  id="email"  value="{{ results.email }}"  placeholder=""  data-error="Please verify your information" data-minlength ='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div><BR/><label for=password class="control-label">Label for [ password ]</label><div class="form-group has-feedback "><input  class="form-control "  name="password"  id="password"  value="{{ results.password }}"  placeholder=""  data-error="Please verify your information" data-minlength ='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div><BR/>                <input name="real_submit" type="hidden" value="real_submit" />
+
+                <input type="submit" class="btn btn-success" value="Submit" />
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<div class="clearfix"></div>
+
+
+
+<!--form html ENDS  -->
+

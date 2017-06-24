@@ -1,0 +1,128 @@
+{% extends "base.html.twig" %}
+
+
+{% block title %}
+    {{ PS_meta_title }}
+    {{ parent() }}
+{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class=" background_color_body">
+
+        <BR><h1>Defaut page</h1>
+        <p class="important">
+            Welcome to my awesome homepage.
+
+
+            <BR> 
+
+        <hr> <h1><span class="glyphicon glyphicon-ok"></span> List Select : </h1>
+        <div class="text-center"> 
+            {% for splitNav in PS_RecSet_sNav_resultFull %}
+                <a href="?list_r_cat={{ splitNav.list_r_cat }}" class="btn btn-default"> {{ splitNav.list_r_cat }}   <span class="label label-success">{{ splitNav.CnT }}</span></a> -    
+                {% endfor %} 
+            <a href="?" class="btn btn-default">  * ALL </a>
+            <a href="?pub_stat=0" class="btn btn-default " ><span class="glyphicon glyphicon-trash"></span>  RECYCLE BIN </a>
+            <BR><BR>
+        </div>
+        <div  > 
+            {# repeat region STARTS #}
+            {% for splitResult in PS_resultFull %}
+                <div class="col-lg-12 col-md-12"><div class="col-lg-6 col-md-6">
+
+                        {# setting and generating individual links #}
+                        {% set link = 'id=' ~ splitResult.id ~ '&sid=' ~ splitResult.sid %}
+                        {% set link_cat_subCat = 'list_r_cat=' ~ splitResult.list_r_cat ~ '&list_s_cat=' ~ splitResult.list_s_cat %}
+
+
+
+                        <a href="?list_r_cat={{ splitResult.list_r_cat }}"  >{{ splitResult.list_r_cat }} </a> > 
+                        <a href="?list_r_cat={{ splitResult.list_r_cat }}&list_s_cat={{ splitResult.list_s_cat }}">
+                            {{ splitResult.list_s_cat }} </a>   > - {{ splitResult.title }} [{{ splitResult.id }}]
+                    </div>
+                    <div class="col-lg-6 col-md-6" id="edit_id_{{ splitResult.id }}">
+                        <div class="col-lg-6 col-md-6 " >
+                            {# link buttons STARTS  #}
+                            <img src="/ico/add-icon.png"  onclick="PS_PopupCenter('{{PS_arr_links.addUrl}}?{{ link_cat_subCat }}', 'title', 1040, 800);
+                                    $(this).parent('div').html('<img src=\'/ico/loading.gif\' \/> ');"  />
+
+
+
+                            <img src="/ico/edit.png"  onclick="PS_PopupCenter('{{ PS_arr_links.editUrl }}?{{ link }}', 'title', 1040, 800);
+                                    $(this).parent('div').html('<img src=\'/ico/loading.gif\' \/> ');"  />
+
+
+                            {# picture STARTS #}
+                            <img src="/ico/image-plus-icon-icon.png"  onclick="PS_PopupCenter('{{ PS_arr_links.fileUpUrl }}?{{ link }}&tblName={{PS_arr_links.tblName}}', 'title', 1040, 800);
+                                    $(this).parent('div').html('<img src=\'/ico/loading.gif\' \/> ');"  />
+                            {% if splitResult.PicCnT > 1 %} 
+                                <sup>{{ splitResult.PicCnT }} &nbsp; </sup> 
+                            {% endif %}
+
+                        </div>
+                        <div class="col-lg-6 col-md-6" >
+                            {# delete undelete STARTS #}
+                            {% if splitResult.pub_stat ==0 %}
+                                <a href="#"  onclick="validate_PS_V2('{{ PS_arr_links.changeStatUrl }}?{{ link }}&t={{PS_arr_links.tblName}}&pub_stat=1&pub_stat_old={{ splitResult.pub_stat }}', 'edit_id_{{ splitResult.id }}')"><img src="/ico/restore-go-back-icon.png" /></a>
+                                {% else %}
+                                <a href="#"  onclick="validate_PS_V2('{{ PS_arr_links.changeStatUrl }}?{{ link }}&t={{PS_arr_links.tblName}}&pub_stat=0&pub_stat_old={{ splitResult.pub_stat }}', 'edit_id_{{ splitResult.id }}')"><img src="/ico/trash-icon_small.png" /></a>
+                                {% endif %}
+
+                            {# link buttons STARTS  #}   
+                        </div>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+            {# repeat region starts #}
+
+        </div>
+        <BR>
+        <HR>
+
+
+        {% if PS_navType == 'raw' %}
+            <BR>
+            nav count :        {{  PS_navCount|raw }}
+            <BR>
+        {% endif %}
+
+
+
+        {% if PS_navType == -1 or  PS_navType == 1 %}
+            <BR><BR> &nbsp;<HR>
+            {{ PS_navFull|raw }}
+            <BR>
+        {% endif %}
+
+        {% if PS_navType == -1 or  PS_navType == 2 %}
+            <BR>
+            nav bar SEO :  {{ PS_navFull_SEO|raw }}
+            <BR>
+        {% endif %}
+        <BR>
+        {{  PS_file_basename|PS_uEn|raw }}
+        <HR>
+        <hr>
+        this is how you access chunk of inside array:  {{ dump(users) }}
+
+    </div>
+    <HR>
+
+    {% if PS_meta_title == false %}
+        <p>Our website is in maintenance mode. Please, come back later.</p>
+    {% endif %}
+
+    <div class="container">
+        <pre>
+        {{ dump() }}
+        </pre>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "include_views/base.html.twig" %}
+    {#<link rel="stylesheet" id="css_id" type="text/css" href="/css/bootstrap.min.css"/>#}
+
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important {
+            color: #336699;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div>
+
+        <BR>
+        <div id="detail">
+            <h1>{{ title }}</h1>
+           Default Page
+            <h2>Entire context dump is below</h2>
+            <pre>{{ dump() }}</pre>
+        </div>
+
+
+    </div>
+    <HR>
+
+
+{% endblock %}
+{% block right_nav %}
+    right block
+
+{% endblock %}

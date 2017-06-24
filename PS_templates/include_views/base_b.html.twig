@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}<title>{% block title %} - Default Title{% endblock %} </title>{% endblock %}
+    <meta name="description" content="{% block description %} {{ description }} {% endblock %}">
+    <meta name="keywords" content="{% block keywords %} {{ keywords }}{% endblock %}">
+    <META NAME="robots" content="{% block robots %} {{ robots }}{% endblock %}">
+    {% include '_inc_meta.twig' %}
+
+
+</head>
+<body>
+
+
+{% include '_inc_header.twig' %}
+
+<div class="container PS_pushDown main_body">
+
+    <div class="col-lg-9 col-md-9">
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    {# right nav section STARTS #}
+    <div class="col-lg-3 col-md-3">
+        <div  >
+            {% block right_nav %}
+                default right nav
+            {% endblock %}
+        </div>
+    </div>
+    {# right nav section STARTS #}
+</div>
+
+
+{% include '_inc_footer.twig' %}
+
+<script type="text/javascript" src="/js/PS_lateral_default.js"></script>
+<script type="text/javascript" src="http://phpspa.intra/js/PS_lateral.js"></script>
+</body>
+</html>

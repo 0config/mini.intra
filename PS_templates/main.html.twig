@@ -1,0 +1,57 @@
+{% extends PS_xhr ? "include_views/base_xhr.html.twig" : "include_views/base.html.twig" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+
+    <div>
+        {{ constant('Twig_Environment::VERSION') }}
+        <BR>
+        Custom FILTER defined in PS_templating.php : <mark>{{ title|PS_toUpperTest }}</mark>
+        <div id="detail">
+            <div id="form_load">form_load</div>
+            <a href="/invalid.php" ps_lateral_id="none">invalid</a> -
+            <a href="form.php?id=135&sid=1572" ps_lateral_id="form_load">form_load</a>
+
+            <h1>{{ title }}</h1>
+            <div class="well">DESC direct: <BR>{{ long_desc }}</div>
+            <div class="well">DESC <span class="bg-danger"> raw/ </span> <kbd>HTML</kbd> rendered: <BR>{{ long_desc|raw }}</div>
+            {% for list_single in  list_all %}
+                <a href="/form.php?id={{ list_single['id'] }}&sid={{ list_single['sid'] }}" ps_lateral_id="form_load">{{ list_single['id'] }}</a> {{ list_single['id'] }} - {{ list_single['sid'] }} <br>
+                
+            {% endfor %}
+            
+            <hr>
+            
+            
+            
+            <h2>Entire context dump is below</h2>
+            <pre>{{ dump() }}</pre>
+        </div>
+
+
+    </div>
+    <HR>
+
+
+{% endblock content %}
+{% block right_nav %}
+    {% if nav %}
+        <ul class="list-group">
+            {% for single_nav in nav %}
+                <li class="list-group-item">
+                    <a href="#">
+                        <div>{{ single_nav }}</div>
+                    </a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <ul class="list-group">nothing here..</ul>
+    {% endif %}
+
+{% endblock %}

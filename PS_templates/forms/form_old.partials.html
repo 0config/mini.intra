@@ -1,0 +1,78 @@
+<hr>
+<div id="form_ajax_out">x</div>
+<div>
+    <a href="/test1.php?a=1&b=2" ps_lateral_id="form_ajax_out">test1</a><br>
+    <a href="/phpInfo.php?a=3&b=4" ps_lateral_id="form_ajax_out">test2</a><br>
+    <a href="/index.php?a=5&b=6" ps_lateral_id="form_ajax_out">test3</a><br>
+    <a href="/form.php?a=7&b=8" ps_lateral_id="form_ajax_out">test4</a><br>
+
+</div>
+<!--form html STARTS -->
+
+
+<div class="container" style="margin-top: 50px;">
+
+    <div><h1 class="text-center">
+        Change your form name here </h1></div>
+    <div class="col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3 success">
+        <form data-toggle="validator" action="" method="post" novalidate="true" id="my_form">
+
+
+            <label for=a class="control-label">Label for [ a ]</label>
+            <div class="form-group has-feedback "><input class="form-control " name="a" id="a"
+                                                         value="<?php echo isset($rowSingle['a']) ? $rowSingle['a'] : ''; ?>"
+                                                         placeholder="" data-error="Please verify your information"
+                                                         required data-minlength='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div>
+            <BR/><label for=b class="control-label">Label for [ b ]</label>
+            <div class="form-group has-feedback "><input class="form-control " name="b" id="b"
+                                                         value="<?php echo isset($rowSingle['b']) ? $rowSingle['b'] : ''; ?>"
+                                                         placeholder="" data-error="Please verify your information"
+                                                         required data-minlength='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div>
+            <BR/><label for=c class="control-label">Label for [ c ]</label>
+            <div class="form-group has-feedback "><input class="form-control " name="c" id="c"
+                                                         value="<?php echo isset($rowSingle['c']) ? $rowSingle['c'] : ''; ?>"
+                                                         placeholder="" data-error="Please verify your information"
+                                                         data-minlength='3' type='text'/>
+                <div class="clearfix help-block with-errors  "></div>
+
+            </div>
+            <BR/> <input name="real_submit" type="hidden" value="real_submit"/>
+
+            <input type="submit" class="btn btn-success" value="Submit"/>
+        </form>
+
+
+    </div>
+</div>
+
+<!--form html ENDS  -->
+
+<script>
+    $('#my_form').validator().on('submit', function (e) {
+        if (e.isDefaultPrevented()) {
+            console.log('form is not valid');
+        } else {
+            // everything looks good!
+            e.preventDefault();
+            console.log('do you ajax here');
+            var url = "/form_post.php"; // the script where you handle the form input.
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: $("#my_form").serialize(), // serializes the form's elements.
+                success: function (data) {
+                    console.log(data); // show response from the php script.
+                    $('#form_ajax_out').html(data);
+                }
+            });
+
+        }
+    });
+</script>

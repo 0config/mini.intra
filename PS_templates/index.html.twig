@@ -1,0 +1,185 @@
+{% extends PS_xhr ? "include_views/base_xhr.html.twig" : "include_views/base.html.twig" %}
+{% block title %}{{ title|replace({'-': " "})|upper }} - Global News .. as it happens..{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block keywords %}{{ keywords }}{% endblock %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block content %}
+    {{ parent() }}
+
+    <div>
+
+        <div id="main_div" class="row ">
+            {# for detail page STARTS #}
+            {% if news_detail %}
+
+                <small> {{ news_detail['source']|upper|replace({'-': " "}) }} &#8250;
+
+                    {% if news_detail['author'] == '0' %}
+                        {{ news_detail['source'] }}
+                    {% else %}
+                        {{ news_detail['author'] }}
+                    {% endif %}
+                    &#8250;
+                </small>
+                <h1>{{ news_detail['title'] }}</h1><br>
+                <a href="{{ news_detail['url'] }}" target="_blank" class="ps-js-link-ref"><img src="{{ news_detail['urlToImage'] }} " alt="{{ news_detail['description'] }} "
+                                                                                               class="img-responsive"></a>
+                <br>{{ news_detail['description'] }}
+                <br><a href="{{ news_detail['url'] }}" target="_blank" class="ps-js-link-ref">click for details ...</a> <br>
+
+                 {{ news_detail['desc_addon']|raw }}
+                <br>
+                <small>
+                    {% if news_detail['publishedAt'] %}
+                        {{ news_detail['publishedAt']|date("M d,  Y - H:i") }} [Local time]
+                    {% else %}
+                        {{ news_detail['timeSfirst']|date("M d,  Y - H:i") }} (US)
+                    {% endif %}
+
+                </small>
+
+                {#<pre>{{ dump(news_detail) }}</pre>#}
+
+                <br>
+                <hr>
+                <br>
+            {% endif %}
+            {# for detail page ENDS #}
+
+
+            {# list page STARTS #}
+            {% for list_single in  list_all %}
+                <div class="col-md-6 col-xl-6  ">
+
+                    <small>
+                        <a href="/source/{{ list_single['source'] }}/" class="text-uppercase">
+                            {{ list_single['source']|replace({'-': " "}) }}
+                        </a>
+                        &#8250;
+
+                        {% if list_single['author'] == '0' %}
+                            {#dont show sub nav #}
+                        {% else %}
+                            <a href="/source/{{ list_single['source'] }}/{{ list_single['author']|raw|PS_url_en }}/">  {{ list_single['author'] }} </a> &#8250;
+                        {% endif %}
+
+                    </small>
+
+
+                    {% set detail_link = '/source/'  ~ list_single['source'] ~ '/'~ list_single['author']|PS_url_en ~ '/' ~ list_single['title']|PS_url_en ~ '~' ~ list_single['id'] ~ '.psx' %}
+                    <h2><a href="{{ detail_link }}"> {{ list_single['title'] }}</a></h2>
+
+
+                    <a href="{{ detail_link }}"><img src="{{ list_single['urlToImage'] }}" alt="{{ list_single['title'] }}"
+                                                     class="img-responsive"></a>
+
+                    <small>
+                        {% if list_single['publishedAt'] %}
+                            {{ list_single['publishedAt']|date("M d,  Y - H:i") }} [Local time]
+                        {% else %}
+                            {{ list_single['timeSfirst']|date("M d,  Y - H:i") }} (US)
+                        {% endif %}
+
+                    </small>
+                    <br>
+                    <hr>
+                </div>
+            {% endfor %} {# list page ENDS #}
+
+            <div class="clearfix "></div>
+            {#{{ PS_RecSet_list_nav|raw }}#}
+            <br>
+
+            {{ PS_RecSet_list_nav_SEO|raw }}
+
+            <hr>
+
+
+        </div>
+
+
+    </div>
+    <div id="last_50" class=" hidden-sm hidden-xs">
+        {#carousel starts #} {% if PS_RecSet_last50_resultFull %}
+            <div id="myCarousel" class="carousel slide" data-ride="carousel" style="min-height: 70px; padding-bottom: 20px; ">
+
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+
+
+                    <div class="item active text-center">
+                        {#intentionally left. blank logic for active pending.. do not remove , else carousel will not work #}
+                        <br><br>
+                        loading...
+                    </div>
+                    {# defining auto_link #}
+                    {% set auto_link = [ ] %}
+
+
+                    {% for singleOf_50 in PS_RecSet_last50_resultFull %}
+
+                        {% set single50_link = '/source/'  ~ singleOf_50['source'] ~ '/'~ singleOf_50['author']|PS_url_en ~ '/' ~ singleOf_50['title']|PS_url_en ~ '~' ~ singleOf_50['id'] ~ '.psx' %}
+                        {#making array for auto link #}
+                        {% set auto_link = auto_link|merge([single50_link]) %}
+
+                        <div class="item text-center " style="margin: 0 80px;">
+                            <a href="{{ single50_link }}">
+                                <div style="height: 30px; overflow: hidden"><h4>{{ singleOf_50.title }}</h4></div>
+                                <span class="small">{{ singleOf_50.source|upper|replace({'-': " "}) }} >
+
+                                    {% if singleOf_50['author'] == '0' %}
+                                        {{ singleOf_50['source']|upper }}
+                                    {% else %}
+                                        {{ singleOf_50['author']|upper|replace({'-': " "}) }}
+                                    {% endif %}
+
+                        </span>
+                            </a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+        {% endif %} {#carousel ends #}
+    </div>
+    <HR>
+    {# making this a json so that, it can be accessed to make it auto round..
+        <script> var resultJSON = {{ PS_RecSet_last50_resultFull|slice(0,10)|json_encode()|raw }}</script>
+    #}
+
+    {{ dump(auto_link|slice(0,10))  }} {#slicing auto_link #}
+    <script> var resultJSON = {{ auto_link|json_encode()|raw }}</script>
+    {{ dump() }} {# note this will not show to public unless logged in as debugger #}
+
+
+{% endblock content %}
+{% block right_nav %}
+    {% if nav %}
+        <ul class="list-group" id="main_nav">
+            {% for single_nav in nav %}
+
+                <li class="list-group-item">
+                    <a href="/source/{{ single_nav }}/">
+                        <div class="text-uppercase">{{ single_nav|replace({'-': " "}) }}</div>
+                    </a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <ul class="list-group">nothing here..</ul>
+    {% endif %}
+
+{% endblock %}

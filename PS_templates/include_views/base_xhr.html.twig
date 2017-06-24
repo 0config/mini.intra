@@ -1,0 +1,6 @@
+{% block content %}
+    {% if PS_flash_message %} {# show up flash messages  #}
+        {{ PS_flash_message|raw }}
+    {% endif %}
+    {% include 'include_views/_inc_PS_form.twig' %} {# this is for dynamic form load #}
+{% endblock %}

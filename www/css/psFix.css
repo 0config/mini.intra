@@ -1,0 +1,389 @@
+/*body {
+    margin-top:40px;
+    background-image:url(../images/index-background-trans.jpg) !important; 
+}*/
+body {
+    /*
+    background: url(/images/body-background.jpg) no-repeat center center fixed;
+    */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1 {
+    font-size: 30px !important;
+    font-weight: 200;
+    word-spacing: 5px;
+    line-height: 30px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, .5);
+    color: #333;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+h2 {
+    font-size: 18px !important;
+    font-weight: 300;
+    word-spacing: 5px;
+    line-height: 22px;
+    margin-top: 0px;
+    /* background-color: rgba(255,255,255,.5); */
+    color: #000;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+.main_body {
+    /*    background-color: rgba(247,247,247,0.7);
+    */
+    background-color: rgba(253, 249, 249, 0.7)
+}
+
+.background_color_body {
+    /*    background-color: rgba(247,247,247,0.7);
+    */
+    background-color: rgba(255, 255, 255, 0.7)
+}
+
+/*removed 03.9.16	}*/
+#main_content {
+
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+#inc_subNav {
+    margin-top: 10px !important;
+    padding: 0px !important;
+}
+
+@media (max-width: 767px) {
+    body {
+        padding: 0px;
+        margin-top: 0px !important;
+    }
+
+    .navbar-header {
+        padding: 0px 15px !important;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        padding: 10px 40px;
+    }
+
+    .navbar-nav .open .dropdown-menu > li > a {
+        line-height: 29px;
+        padding: 0px 40px;
+    }
+
+    .container {
+        padding-left: 3px;
+        padding-right: 3px;
+        /* no longer needed
+        margin-top: 50px;
+        */
+    }
+
+    .PS_breakMob {
+        display: block !important;
+        height: 30px !important;
+    }
+
+}
+
+/* for background on hover nav button */
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #FFF !important;
+    background-color: #666 !important;
+}
+
+input, select, textarea {
+    display: inline;
+    /*  width: 100%;
+    */
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    margin: 3px 0px;
+    float: left;
+}
+
+.PS_bgColorGrey7 {
+    background-color: rgba(204, 204, 204, .7);
+}
+
+.PS_bgColorGrey5 {
+    background-color: rgba(204, 204, 204, .5);
+}
+
+.PS_bgColorGrey3 {
+    background-color: rgba(204, 204, 204, .3);
+}
+
+.PS_bgColorGrey1 {
+    background-color: rgba(204, 204, 204, .1);
+}
+
+.PS_bgColorGreen7 {
+    background-color: rgba(126, 172, 195, .7);
+}
+
+.PS_bgColorGreen5 {
+    background-color: rgba(126, 172, 195, .5);
+}
+
+.PS_bgColorGreen3 {
+    background-color: rgba(126, 172, 195, .3);
+}
+
+.PS_bgColorGreen1 {
+    background-color: rgba(126, 172, 195, .1);
+}
+
+.tBoxRed {
+    border: 2px solid #F00 !important;
+    padding: 2px;
+    background-image: url(/ico/Status-user-busy-icon.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+    background-color: rgba(255, 0, 0, 0.1);
+    color: #F00;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-animation-iteration-count: all infinite !important;
+}
+
+.tBoxGreen {
+    border: 1px solid #390;
+    padding: 3px;
+    background-image: url(/ico/tick-circle-frame-icon.png);
+    background-repeat: no-repeat;
+    background-position: 98%;
+    color: #390;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+}
+
+.PS_btnToggle_nextElement {
+    cursor: pointer;
+
+}
+
+.PS_hideOnLoad {
+    display: none;
+}
+
+.PS_pushDown {
+    margin-top: 55px !important;
+}
+
+.if_tablet_show {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .if_tablet_hide {
+        display: none !important;
+    }
+
+    .if_tablet_show {
+        display: inline-block !important;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+    #my-content {
+        display: block;
+    }
+
+    /* show it on small screens */
+
+}
+
+/* alert without background starts */
+.alert-success-X-back {
+    color: #3c763d;
+    background-color: rgba(0, 102, 0, .02);
+    border-color: rgba(0, 102, 0, .2);
+}
+
+.alert-info-X-back {
+    color: #31708f;
+    background-color: rgba(0, 0, 255, 0.02);
+    border-color: rgba(0, 0, 255, 0.2);
+}
+
+.alert-warning-X-back {
+    color: #8a6d3b;
+    background-color: rgba(255, 153, 51, 0.02);
+    border-color: rgba(255, 153, 51, 0.2);
+}
+
+.alert-danger-X-back {
+    color: #a94442;
+    background-color: rgba(255, 0, 0, .02);
+    border-color: rgba(255, 0, 0, .2);
+}
+
+.fancyFont_std {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 19px;
+    letter-spacing: 2px;
+    color: #06C;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    display: block;
+}
+
+.PS_overFlowAuto {
+    overflow: auto;
+}
+
+.PS_badge-danger {
+    background-color: #d43f3a;
+}
+
+.PS_badge-warning {
+    background-color: #d58512;
+}
+
+.PS_badge-success {
+    background-color: #398439;
+}
+
+.PS_badge-info {
+    background-color: #269abc;
+}
+
+.PS_badge-inverse {
+    background-color: #333333;
+}
+
+.PS_more {
+    height: 30px;
+    background: rgba(0, 0, 0, 0.027451);
+    -webkit-border-radius: 0px 0px 36px 9px;
+    -moz-border-radius: 0px 0px 36px 9px;
+    border-radius: 0px 0px 36px 9px;
+    -webkit-box-shadow: #B3B3B3 3px 3px 3px;
+    -moz-box-shadow: #B3B3B3 3px 3px 3px;
+    box-shadow: #B3B3B3 3px 3px 3px;
+    padding-top: 5px;
+
+    margin-bottom: 50px;
+}
+
+/* overriding main.css from hee */
+
+.search-form .input-wrap {
+
+    height: 30px;
+}
+
+.form-holder {
+    background: rgba(77, 90, 75, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    margin: 25px;
+}
+
+.gsc-control-cse form.gsc-search-box {
+    margin: 8px 15px 0 0 !important;
+    padding: 0 14px !important;
+}
+
+/*mobile nav override starts */
+.navbar-brand {
+    float: left;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    height: 50px;
+    margin-left: 10px;
+}
+
+/*mobile nav override ends */
+
+/* select2 conflict with psFix else you will not see any resuld here */
+.select2-results__options {
+    list-style: none;
+    margin: 0;
+    padding: 5px;
+}
+
+/* this is for icon background */
+.select2-search__field {
+    background-image: url(/ico/search-icon.png) !important;
+    background-repeat: no-repeat !important;
+    /*background-position: right 10px;        background-position: right ;*/
+    background-position: calc(100% - 10px) calc(100% - 10px); /*background-position: right ;*/
+
+    padding-right: 20px;
+
+}
+
+.select2_pushTboxText {
+    padding-right: 20px;
+
+}
+
+.header_logo {
+    margin-top: -5px;
+}
+
+.fidex_menu {
+    position: fixed;
+    top: 50px;
+    /*left: 50px;*/
+    padding: 1em;
+    background-color: snow;
+}
+
+/*carousel starts */
+#last_50 {
+    position: fixed;
+    bottom: 0;
+    background-color:rgba(255, 255, 255, 0.9) ;
+    max-width: 800px;
+    width:100%;
+/*    border:solid ;
+    border-width: 1px;
+    border-color: grey;*/
+}
+
+.carousel-control.right {
+    right: 0;
+    left: auto;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .5) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .5) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x;
+    color: #2e6da4;
+}
+
+.carousel-control.left {
+    left: 0;
+    right: auto;
+    background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .5) 100%);
+    background-image: -o-linear-gradient(left, rgba(0, 0, 0, .0001) 0, rgba(0, 0, 0, .5) 100%);
+    background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .0001)), to(rgba(0, 0, 0, .5)));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);
+    background-repeat: repeat-x;
+    color: #2e6da4;
+}
+
+/*carousel ends */

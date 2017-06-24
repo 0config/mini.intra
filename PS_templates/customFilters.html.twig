@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}your title here{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="container">
+
+        <BR><h1>Custom Filters</h1>
+custom filter test Integration pending = {{ 'Twig'|PS_uEn }}
+    </div>
+    <HR>
+
+    <div class="container">
+    
+        <p>The current version is {{ constant('Twig_Environment::VERSION') }}</p> 
+
+        This is how you dump everything : {{  dump() }}
+    </div>
+    
+
+{% endblock %}

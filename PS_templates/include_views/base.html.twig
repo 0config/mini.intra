@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block head %}<title>{% block title %} - Default Title{% endblock %} </title>{% endblock %}
+    <meta name="description" content="{% block description %} {{ description }} {% endblock %}">
+    <meta name="keywords" content="{% block keywords %} {{ keywords }}{% endblock %}">
+    <META NAME="robots" content="{% block robots %} {{ robots }}{% endblock %}">
+    {% include 'include_views/_inc_meta.twig' %}
+
+
+</head>
+<body>
+
+
+{% include 'include_views/_inc_header.twig' %}
+
+<div class="container PS_pushDown main_body ">
+
+    <div class="col-lg-9 col-md-9  ">
+        <div id="content">
+
+            {% block content %}
+                {% if PS_flash_message %} {# show up flash messages  #}
+                    {{ PS_flash_message|raw }}
+                {% endif %}
+                {% include 'include_views/_inc_PS_form.twig' %} {# this is for dynamic form load #}
+            {% endblock %}
+        </div>
+    </div>
+
+    {# right nav section STARTS #}
+    <div class="col-lg-3 col-md-3">
+        <div>
+            {% block right_nav %}
+                default right nav
+            {% endblock %}
+        </div>
+    </div>
+    {# right nav section STARTS #}
+</div>
+
+
+{% include 'include_views/_inc_footer.twig' %}
+
+<script type="text/javascript" src="/js/PS_lateral_default.js"></script>
+<script type="text/javascript" src="http://phpspa.intra/js/PS_lateral.js"></script>
+<script type="text/javascript" src="/js/PS_tail.js"></script>
+
+{# analytics starts #}
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-96094544-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+{# add this code starts #}
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58e04853ddc97429"></script>
+{# add this code ENDS #}
+</body>
+</html>
