@@ -34,6 +34,31 @@ class PS_cl_formSelect {
         }  // catch ends
     }
 
+    public static function select_returnArr_DEPRECATED($SQL = '') {
+        try {
+            $db = new PDO(DB_DRIVER . ":dbname=" . DB_DATABASE . ";host=" . DB_SERVER, DB_USER, DB_PASSWORD);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+
+            $selectQry = $db->prepare($SQL);
+            if ($selectQry->execute()) {
+                $result = ' select success ';
+                $resultQty = $selectQry->rowCount();
+
+                $row = $selectQry->fetchAll(PDO::FETCH_ASSOC); // making array
+
+                return ($row);
+            } // if selectQry->execute ends
+            $db = null;
+        } // try ends
+        catch (PDOException $e) {
+            $errMessage = 'PDOException error ' . $e->getMessage();
+            PS_cl_log::errorAll($errMessage); // logging error log
+            echo ("PDOException Error occured [@select]: see log for details . "); // org //
+            exit; // trigger_error("Error occured:" . $e->getMessage(), E_USER_ERROR);
+        }  // catch ends
+    }
+    //
 }
 
 ?>
