@@ -1,5 +1,6 @@
 <?php
 @session_start();
+date_default_timezone_set('America/Los_Angeles');//or change to whatever timezone you want
 define("PS_DOCROOT", $_SERVER['DOCUMENT_ROOT'] );// if you add path to this make sure you do not put / at end
 // \define("PS_DOCROOT", filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') );
 // for PS_UNDERGROUND STARTS - thi will take 1 level down docroot

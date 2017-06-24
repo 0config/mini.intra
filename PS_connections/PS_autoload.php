@@ -12,7 +12,7 @@ require_once(PS_UNDERGROUND . '/PS_connections/_PS_connxPDO.php'); // new connec
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_mySQL_pdo.php'); // mysql PDO master details
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_Routes.php'); // urlEn, Keyword, Trim etc here need to make as class>static fn..
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_insert.php'); // insert added 100516
-// require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_insRaw.php'); // insert added 03.14.17
+require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_insRaw.php'); // insert added 03.14.17
 
 
 
