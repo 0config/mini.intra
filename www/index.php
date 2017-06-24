@@ -1,15 +1,20 @@
 <?php $title = 'my title';  ?>
-<?php require_once("/PS_raw_templates/_header.php"); ?>
+  <?php require_once("/PS_raw_templates/_header.php"); ?>
 
-  <!--form html STARTS -->
+    <?php require_once("/PS_raw_templates/_left.php"); ?>
 
-  <div class='well'>	your default place... </div>
+      <div class='col-lg-6'>
 
-  <div class="clearfix"></div>
+        <!--form html STARTS -->
 
-
-
-  <!--form html ENDS  -->
+        <div> your default place... </div>
 
 
-  <?php require_once("/PS_raw_templates/_footer.php"); ?>
+
+      </div>
+
+      <!--form html ENDS  -->
+
+
+      <?php require_once("/PS_raw_templates/_right.php"); ?>
+        <?php require_once("/PS_raw_templates/_footer.php"); ?>
