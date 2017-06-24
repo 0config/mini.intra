@@ -16,7 +16,8 @@ require_once(PS_UNDERGROUND . '/PS_connections/_PS_connxPDO.php'); // new connec
 
 
 
-// require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_static.php');
+require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_static.php');
+require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_exists.php');
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_barcode.php');
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_log.php');// note this should always be before  _acl
 // require_once(PS_UNDERGROUND . '/PS_connections/_PS_cl_acl.php');// note this should always be before  _log
