@@ -1,8 +1,9 @@
-#Filter gen: 
+# Filter gen: 
+
 visit:http://dry-project.lateraljs.org/formGen/V2_filterGen.php?filters=name|email|phone|city|state|zip&condition=AND
 
-##add:  'filter' seperated by |
-##: condition : AND or OR
+## add:  'filter' seperated by |
+## : condition : AND or OR
 
         <?php
         $name = isset($_GET['name'])  ? ($_GET['name']) : '' ;
@@ -29,7 +30,8 @@ visit:http://dry-project.lateraljs.org/formGen/V2_filterGen.php?filters=name|ema
         ?>
 
 
-#for: SQL GEN : http://dry-project.lateraljs.org/formGen/V2_sqlGen.php?rs_name=sNav
+# for: SQL GEN 
+http://dry-project.lateraljs.org/formGen/V2_sqlGen.php?rs_name=sNav
 ##change rs_name as required: 
 
         // Slim insert:
@@ -44,7 +46,7 @@ visit:http://dry-project.lateraljs.org/formGen/V2_filterGen.php?filters=name|ema
         ?>
 
 
-#SLIM SELECT
+# SLIM SELECT
 
         <?php
         /* Generated using PS_sqlGen STARTS -  All rights reserved.
@@ -62,7 +64,7 @@ visit:http://dry-project.lateraljs.org/formGen/V2_filterGen.php?filters=name|ema
         ?>
 
 
-#SLIM DROP DOWN
+# SLIM DROP DOWN
 
         <select name="third" id="third" class="form-control dropdown-select PS_select_search">
         <option value="-1" selected="">select one</option>
