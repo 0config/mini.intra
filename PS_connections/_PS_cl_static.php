@@ -79,14 +79,9 @@ class PS_cl_static
     public static function make_dropDown_arrCond($db_table = 'ps_list_select', $tblKoFieldOutput_for_selValue = 'id', $tblKoFieldOutput_for_selLabel = 'title', $dropDownStrComp_selVal = '1', $arrCond, $debug = '0')
     {
 
-//        $whereSQL = "";
-        /*        if ($whereField != '') {
-                    $whereSQL = " WHERE  $whereField  = '" . $whereValue . "'";
-                } else {
-                    $whereSQL = " ";
-                }*/
-
-//        $whereField = '';
+        if($arrCond ==''){
+            $arrCond = []; 
+        }
         $whereSQL = " WHERE  ";
         if (count($arrCond) > 0) {
             foreach ($arrCond as $key => $arrSingle) {
