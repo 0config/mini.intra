@@ -1,0 +1,8 @@
+mysql_select_db($database_conxAdmin, $conxAdmin);
+
+$extendLimit_forGroupConcat = mysql_query("SET SESSION group_concat_max_len = 1000000;", $conxAdmin) or die(mysql_error());
+
+$query_genSkills = "SELECT sk_cat, group_concat(sk_name SEPARATOR '|-|' ) as GrpSkillS , count(*) as CnT FROM skills group by sk_cat order by sk_cat ASC ";
+$genSkills = mysql_query($query_genSkills, $conxAdmin) or die(mysql_error());
+$row_genSkills = mysql_fetch_assoc($genSkills);
+$totalRows_genSkills = mysql_num_rows($genSkills);
