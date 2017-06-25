@@ -9,11 +9,19 @@ $arrayInput = [
     "email" =>  rand(11, 99) . 'you@email.com',
 
 ];
-$a = new PS_cl_insRaw();
+
+
+$res2 = PS_cl_insRaw::PS_ins_withResult($tableName, $arrayInput, '0');
+echo 'insert id : ' .  $res2;
+var_dump($arrayInput);
+
+/*$a = new PS_cl_insRaw();
 $response =  $a::PS_ins_withResult($tableName, $arrayInput, '0');
 // PS_check{if_exists}, takes params : table_name, check values in assoc array
 // will return 0 if no record found and will return 1 if 1 or more record/s found... !
 echo '<hr>';
 echo 'record inserted to ' . $tableName . ' table with lastInsertId = ' . $response;
-var_dump($arrayInput);
+var_dump($arrayInput);*/
+
 ?>
+<hr>
